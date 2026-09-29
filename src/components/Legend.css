@@ -1,0 +1,110 @@
+/* src/components/Legend.css */
+
+.ocean-legend {
+  position: fixed;
+  bottom: 24px;
+  left: 24px;
+  z-index: 100;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  pointer-events: none;
+  animation: fade-in 0.6s ease both;
+}
+
+.legend-card {
+  background: rgba(5, 18, 35, 0.82);
+  backdrop-filter: blur(20px) saturate(180%);
+  -webkit-backdrop-filter: blur(20px) saturate(180%);
+  border: 1px solid rgba(255, 200, 0, 0.2);
+  border-radius: var(--radius-md);
+  padding: 12px 16px;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.5);
+  pointer-events: auto;
+  min-width: 220px;
+}
+
+.legend-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 8px;
+}
+
+.legend-title {
+  font-family: var(--font-display);
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: #e0f4ff;
+  letter-spacing: 0.02em;
+}
+
+.legend-unit {
+  font-size: 0.72rem;
+  color: #ffd700;
+  font-weight: 600;
+}
+
+.color-bar {
+  height: 10px;
+  border-radius: 9999px;
+  width: 100%;
+  margin-bottom: 6px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.4);
+}
+
+.legend-labels {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.7rem;
+  color: rgba(160, 200, 230, 0.7);
+  font-family: var(--font-display);
+}
+
+/* Depth slab indicators in flat mode */
+.depth-legend-card {
+  background: rgba(5, 18, 35, 0.82);
+  backdrop-filter: blur(20px) saturate(180%);
+  -webkit-backdrop-filter: blur(20px) saturate(180%);
+  border: 1px solid rgba(255, 200, 0, 0.2);
+  border-radius: var(--radius-md);
+  padding: 10px 14px;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.5);
+  pointer-events: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  animation: fade-in 0.3s ease;
+}
+
+.depth-legend-title {
+  font-size: 0.72rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: rgba(160, 200, 230, 0.6);
+}
+
+.depth-pills {
+  display: flex;
+  gap: 4px;
+  flex-wrap: wrap;
+}
+
+.depth-pill {
+  font-size: 0.68rem;
+  padding: 3px 6px;
+  border-radius: 4px;
+  background: rgba(0, 30, 60, 0.6);
+  border: 1px solid rgba(255, 200, 0, 0.35);
+  color: rgba(160, 200, 230, 0.8);
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.depth-pill:hover, .depth-pill.active {
+  background: rgba(255, 200, 0, 0.35);
+  border-color: #ffd700;
+  color: #ffd700;
+  font-weight: 600;
+}

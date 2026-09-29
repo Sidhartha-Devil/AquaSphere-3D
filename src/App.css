@@ -1,0 +1,126 @@
+/* src/App.css */
+
+/* ── App Shell ── */
+.app-shell {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  overflow: hidden;
+  background: #050d1a;
+  position: relative;
+}
+
+/* ── Content area (fills remaining space after sidebar) ── */
+.app-content {
+  flex: 1;
+  height: 100%;
+  position: relative;
+  overflow: hidden;
+  /* Margin is controlled via inline style from JS for smooth expansion */
+  transition: margin-left 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* ── View transition animation ── */
+@keyframes viewEnter {
+  from {
+    opacity: 0;
+    transform: translateX(18px) scale(0.99);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0) scale(1);
+  }
+}
+
+.view-enter {
+  animation: viewEnter 0.38s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+
+/* ── Placeholder view ── */
+.placeholder-view {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: radial-gradient(ellipse at 40% 40%, rgba(0, 40, 80, 0.7) 0%, #050d1a 65%);
+}
+
+.placeholder-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 16px;
+  padding: 52px 64px;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(0, 212, 255, 0.12);
+  border-radius: 20px;
+  backdrop-filter: blur(12px);
+  animation: cardFloat 4s ease-in-out infinite;
+}
+
+@keyframes cardFloat {
+  0%, 100% { transform: translateY(0px); }
+  50%       { transform: translateY(-6px); }
+}
+
+.placeholder-icon {
+  font-size: 3.5rem;
+  filter: drop-shadow(0 0 16px rgba(0,212,255,0.5));
+}
+
+.placeholder-title {
+  font-size: 2rem;
+  font-weight: 700;
+  color: #00d4ff;
+  margin: 0;
+  letter-spacing: -0.5px;
+}
+
+.placeholder-desc {
+  font-size: 0.95rem;
+  color: rgba(255, 255, 255, 0.5);
+  margin: 0;
+  max-width: 340px;
+  line-height: 1.6;
+}
+
+.placeholder-badge {
+  padding: 6px 18px;
+  background: rgba(0, 212, 255, 0.1);
+  border: 1px solid rgba(0, 212, 255, 0.3);
+  border-radius: 99px;
+  color: #00d4ff;
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+}
+
+/* ── Global Wave & Fluid Animations ── */
+@keyframes hudTextGradientWave {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+@keyframes oceanFloat {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-4px); }
+}
+
+@keyframes waterGlowPulse {
+  0%, 100% { filter: drop-shadow(0 0 8px rgba(0, 229, 255, 0.4)); }
+  50% { filter: drop-shadow(0 0 20px rgba(0, 255, 200, 0.8)); }
+}
+
+.text-fluid-shimmer {
+  background: linear-gradient(135deg, #00f0ff 0%, #38bdf8 25%, #c084fc 50%, #00ffaa 75%, #00f0ff 100%);
+  background-size: 250% 100%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  animation: hudTextGradientWave 5s ease-in-out infinite;
+}
+

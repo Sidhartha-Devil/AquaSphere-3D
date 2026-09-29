@@ -1,0 +1,116 @@
+/* ── GeoLabelsOverlay.css ─────────────────────────────────────────────────── */
+
+/* ── Base label — used both in R3F Html and flat overlay ─────────────────── */
+.geo-label {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1px;
+  pointer-events: none;
+  user-select: none;
+  font-family: 'Inter', 'Segoe UI', system-ui, sans-serif;
+  white-space: nowrap;
+  text-shadow:
+    0 0 8px var(--glow-color, rgba(140, 110, 0,0.7)),
+    0 1px 3px rgba(0,0,0,0.95),
+    0 0 2px rgba(0,0,0,1);
+  animation: labelFadeIn 0.4s ease forwards;
+}
+
+@keyframes labelFadeIn {
+  from { opacity: 0; transform: scale(0.85); }
+  to   { opacity: 1; transform: scale(1); }
+}
+
+/* ── Name row ─────────────────────────────────────────────────────────────── */
+.geo-label__name {
+  display: flex;
+  align-items: center;
+  gap: 3px;
+  letter-spacing: 0.05em;
+  font-weight: 600;
+  line-height: 1;
+}
+
+.geo-label__icon {
+  font-style: normal;
+  opacity: 0.9;
+}
+
+.geo-label__sub {
+  font-size: 0.70em;
+  font-weight: 400;
+  opacity: 0.72;
+  letter-spacing: 0.02em;
+}
+
+/* ── Size variants ─────────────────────────────────────────────────────────── */
+.geo-label--large .geo-label__name {
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.geo-label--medium .geo-label__name {
+  font-size: 10.5px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.geo-label--small .geo-label__name {
+  font-size: 9px;
+  font-weight: 500;
+  letter-spacing: 0.03em;
+}
+
+/* ── Type-specific styles ──────────────────────────────────────────────────── */
+.geo-label--ocean .geo-label__name {
+  letter-spacing: 0.20em;
+  animation: labelFadeIn 0.4s ease forwards, oceanGlow 4s ease-in-out infinite alternate;
+}
+@keyframes oceanGlow {
+  from { text-shadow: 0 0 8px var(--glow-color), 0 1px 3px rgba(0,0,0,0.95); }
+  to   { text-shadow: 0 0 20px var(--glow-color), 0 1px 3px rgba(0,0,0,0.95); }
+}
+
+.geo-label--trench .geo-label__icon {
+  font-size: 1.0em;
+  animation: trenchPulse 2.5s ease-in-out infinite;
+}
+@keyframes trenchPulse {
+  0%, 100% { transform: scaleY(1);   opacity: 0.85; }
+  50%       { transform: scaleY(1.4); opacity: 1.0;  }
+}
+
+.geo-label--current .geo-label__icon {
+  animation: currentWave 2s ease-in-out infinite;
+}
+@keyframes currentWave {
+  0%, 100% { letter-spacing: 0em;    opacity: 0.7; }
+  50%       { letter-spacing: 0.15em; opacity: 1.0; }
+}
+
+.geo-label--special .geo-label__icon {
+  animation: specialSpin 10s linear infinite;
+}
+@keyframes specialSpin {
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(360deg); }
+}
+
+/* Tier opacity — lighter for deeper tiers */
+.geo-label--tier1 { opacity: 1.00; }
+.geo-label--tier2 { opacity: 0.90; }
+.geo-label--tier3 { opacity: 0.80; }
+.geo-label--tier4 { opacity: 0.70; }
+
+/* ── Flat map overlay container ───────────────────────────────────────────── */
+.geo-labels-flat-container {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  overflow: hidden;
+  z-index: 10;
+}
